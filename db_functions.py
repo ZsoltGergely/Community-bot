@@ -18,7 +18,28 @@
     #     leader_id
     #     guild_id
 
+def db_get_guild(id):
+    try:
+        sql_search = "SELECT * FROM guilds WHERE guild_id = '{}' "
+        mycursor.execute(sql_search.format(str(id)))
+        record = mycursor.fetchone()
 
+    except mysql.connector.Error as e:
+        print("------------------------")
+        print ("Error code:", e.errno)        # error number
+        print ("SQLSTATE value:", e.sqlstate )# SQLSTATE value
+        print ("Error message:", e.msg )      # error message
+        print ("Error:", e)                   # errno, sqlstate, msg values
+        s = str(e)
+        print ("Error:", s)                   # errno, sqlstate, msg values
+        print("------------------------")
+        print("Reconnecting...")
+        mydb.reconnect()
+        print("------------------------")
+        sql_search = "SELECT * FROM guilds WHERE guild_id = '{}' "
+        mycursor.execute(sql_search.format(str(id)))
+        record = mycursor.fetchone()
+    return record
 
 def db_get_community_name(name):
     try:

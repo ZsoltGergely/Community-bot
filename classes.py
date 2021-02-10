@@ -11,10 +11,11 @@ class NoCommunityWithName(Error):
         self.message = message
 
 class Comm_Guild_class:
-    def __init__(self, id, emotes, invite_channel_id):
+    def __init__(self, id, emoji, invite_channel_id, guild):
         self.id = id
-        self.emotes = emotes
+        self.emoji = emoji
         self.invite_channel_id = invite_channel_id
+        self.guild = guild
         # self.communities = communities
 
     def create_comm(self, name, leader, role):

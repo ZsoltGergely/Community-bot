@@ -1,12 +1,12 @@
-from classes import *
-from db_functions import *
-from discord_functions import *
 import discord
 from discord.utils import get
 from discord.ext import commands
 import datetime
 import asyncio
 import mysql.connector
+from classes import *
+from db_functions import *
+from discord_functions import *
 
 colors = discord.Color
 bot = commands.Bot(command_prefix='&')
@@ -41,14 +41,14 @@ async def test(message, arg1, *, arg2):
     print(message.message)
     print(message.guild)
 
-async def createcomm(message, arg1, *, arg2):
-    await message.send('You passed {} and the rest is {}'.format(arg1, arg2))
-    print(message.author)
-    print(message.message)
-    print(message.guild)
+async def createcomm(message, name, *, mentions):
+    guild_record = db_get_guild(message.guild.id)
+    comm_guild = Comm_Guild_class(message.guild.id, int(guild_record[1]), int(guild_record[2]), message.guild)
+    community = comm_guild.create_comm(name, message.mentions[0], message.role_mentions[0])
+    db_insert_community(community.name, role_id, leader_id, guild_id)
+    get_community_embed(name, leader_mention, role_mention, community_id)
 
-
-# test = Comm_Guild_class(2, 5, 7584783048238)
+#
 # print(test.id)
 # print(test.emotes)
 # print(test.invite_channel_id)
