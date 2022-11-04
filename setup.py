@@ -64,4 +64,4 @@ async def createcomm(message, name, *, mentions):
 # print(ass.Comm_Guild.invite_channel_id)
 
 
-bot.run('NjY4Mjc2Mjk1ODUwOTE3OTE4.XiO6zA.l7LV6fRbvDpFGuNkkS5DlFPSpSk')
+bot.run('TOKEN')
