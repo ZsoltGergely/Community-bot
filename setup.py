@@ -12,10 +12,10 @@ colors = discord.Color
 bot = commands.Bot(command_prefix='&')
 
 mydb = mysql.connector.connect(
-    host="89.37.194.114",
-    user="testuser",
-    password="h=ik.vREx+EMWuNyim!Zsd.c",
-    database="communities_test"
+    host="IP",
+    user="USERNAME",
+    password="PASS",
+    database="DB"
 )
 
 
